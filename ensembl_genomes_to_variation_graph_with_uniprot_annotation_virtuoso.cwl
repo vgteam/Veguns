@@ -70,4 +70,10 @@ steps:
     out:
       [ genome_graph ]
 
+  xg_index_the_vg:
+    run: xg_index_vg.cwl
+    in:
+      vg: msga_the_fasta/genome_graph
+    out:
+      [ genome_xg ]
 outputs: []
