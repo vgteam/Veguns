@@ -42,4 +42,10 @@ steps:
     out:
       [ filtered_ensemblgenomes_metadata ]
 
+  fetch_fasta:
+    run: retrieve_genomic_fasta_from_ensembl_ftp.cwl
+    in:
+      filtered_ensemblgenomes_metadata: filter_ensembl_metadata/filtered_ensemblgenomes_metadata
+    out:
+      [ concatenated_ensembl_fasta ]
 outputs: []
