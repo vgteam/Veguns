@@ -7,6 +7,7 @@ inputs:
   ncbiTaxid:
     type: string
 arguments:
+  - -f
   - "https://rest.ensemblgenomes.org/info/genomes/taxonomy/$(inputs.ncbiTaxid)?content-type=application/json"
 outputs:
   ensemblgenomes_metadata:

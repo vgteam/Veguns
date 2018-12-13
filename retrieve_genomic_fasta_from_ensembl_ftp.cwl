@@ -29,6 +29,7 @@ arguments:
 
 outputs:
   concatenated_ensembl_fasta:
+    format: http://edamontology.org/format_1929
     type: File
     outputBinding:
       glob: ensembl.fasta.gz

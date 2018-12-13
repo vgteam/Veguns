@@ -63,4 +63,11 @@ steps:
     out:
       [ fixed_ensembl_turtle ]
 
+  msga_the_fasta:
+    run: fasta_vg_msga_into_graph.cwl
+    in:
+      fastas: fetch_fasta/concatenated_ensembl_fasta
+    out:
+      [ genome_graph ]
+
 outputs: []
