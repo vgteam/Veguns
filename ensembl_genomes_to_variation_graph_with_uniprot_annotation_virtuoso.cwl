@@ -55,4 +55,12 @@ steps:
       filtered_ensemblgenomes_metadata: filter_ensembl_metadata/filtered_ensemblgenomes_metadata
     out:
       [ concatenated_ensembl_turtle ]
+
+  fix_ensembl_turtle:
+    run: fix_iris_in_turtle_from_ensembl.cwl
+    in:
+      ensembl_turtle: fetch_ensembl_ttl/concatenated_ensembl_turtle
+    out:
+      [ fixed_ensembl_turtle ]
+
 outputs: []
