@@ -17,6 +17,7 @@ arguments:
     valueFrom: |
       import json
       import urllib.request
+      import gzip
       with open('$(inputs.filtered_ensemblgenomes_metadata.path)', 'r') as f:
         genomes = json.load(f)
         with open('/dev/stdout', 'wb') as fasta:
@@ -25,12 +26,14 @@ arguments:
             loc="/pub/current/bacteria/fasta/"+collection+"/"+genome['species']+"/dna/"
             genomeFasta=genome['species'].capitalize()+'.'+genome['assembly_name']+'.dna.chromosome.Chromosome.fa.gz'
             with urllib.request.urlopen('ftp://ftp.ensemblgenomes.org'+loc+genomeFasta) as response:
-              fasta.write(response.read())
+              data=gzip.decompress(response.read())
+              data=data.replace(b'>Chromosome dna:chromosome chromosome',b'>'+genome['assembly_name'].encode('utf-8'));
+              fasta.write(data)
 
 outputs:
   concatenated_ensembl_fasta:
     format: http://edamontology.org/format_1929
     type: File
     outputBinding:
-      glob: ensembl.fasta.gz
-stdout: ensembl.fasta.gz
+      glob: ensembl.fasta
+stdout: ensembl.fasta

@@ -19,7 +19,7 @@ hints:
 inputs:
   fastas:
     type: File
-    format: edam:format_1929  # we need a IRI/URI for FASTA format
+    # format: edam:format_1929  # we need a IRI/URI for FASTA format
 
 baseCommand: [ vg, msga ]
 
