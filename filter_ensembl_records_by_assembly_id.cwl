@@ -19,7 +19,7 @@ inputs:
     type: string
 arguments:
   - -c
-  - '.[]|select(.assembly_id|test("$(inputs.assembly_identifiers_as_regex)"))|[.]'
+  - '[.[]|select(.assembly_id|test("$(inputs.assembly_identifiers_as_regex)"))|.]'
   - $(inputs.ensemblgenomes_metadata.path)
 outputs:
   filtered_ensemblgenomes_metadata:
