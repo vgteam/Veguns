@@ -13,19 +13,17 @@ baseCommand: jq
 inputs:
   ensemblgenomes_metadata:
     type: File
-    doc: A json file from the ensemblgenomes website that
+  assembly_identifiers_as_regex:
+    type: string
+  ncbiTaxid:
+    type: string
 arguments:
   - -c
-  - '.[]|[.name,.assembly_id,.dbname,.species]'
+  - '.[]|select(.assembly_id|test("$(inputs.assembly_identifiers_as_regex)"))|[.]'
   - $(inputs.ensemblgenomes_metadata.path)
-  - valueFrom: '|'
-    shellQuote: false
-  - tr
-  - -d
-  - '[]'
 outputs:
-  ensemblgenomes_metadata:
+  filtered_ensemblgenomes_metadata:
     type: File
     outputBinding:
-      glob: ensemblgenomesMetadataForTaxid$(inputs.ensemblgenomes_metadata.basename).tsv
-stdout: ensemblgenomesMetadataForTaxid$(inputs.ensemblgenomes_metadata.basename).tsv
+      glob: $(inputs.ncbiTaxid)_filtered_ensembl_metadata.json
+stdout: $(inputs.ncbiTaxid)_filtered_ensembl_metadata.json

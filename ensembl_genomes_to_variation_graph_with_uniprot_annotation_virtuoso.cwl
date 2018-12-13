@@ -18,11 +18,28 @@ steps:
       ncbiTaxid: my_ncbiTaxid
     out: [ ensemblgenomes_metadata ]
 
-  filter_ensembl_metadata:
-    run: turn_ensembl_metadata_into_four_column_csv_file.cwl
+  # filter_ensembl_metadata:
+  #   run: turn_ensembl_metadata_into_four_column_csv_file.cwl
+  #   in:
+  #     ensemblgenomes_metadata: fetch_ensembl_metadata/ensemblgenomes_metadata
+  #     ncbiTaxid: my_ncbiTaxid
+  #   out:
+  #     [ensemblgenomes_metadata]
+
+  convertAssemblyIdsFromUniProtIntoRegex:
+    run: convertAssemblyIdsFromUniProtIntoRegex.cwl
     in:
-      ensemblgenomes_metadata: fetch_ensembl_metadata/ensemblgenomes_metadata
+      assembly_identifiers: fetch_assembly_ids/assembly_identifiers
     out:
-      [ensemblgenomes_metadata]
+      [ assembly_identifiers_as_regex ]
+
+  filter_ensembl_metadata:
+    run: filter_ensembl_records_by_assembly_id.cwl
+    in:
+      ncbiTaxid: my_ncbiTaxid
+      ensemblgenomes_metadata: fetch_ensembl_metadata/ensemblgenomes_metadata
+      assembly_identifiers_as_regex: convertAssemblyIdsFromUniProtIntoRegex/assembly_identifiers_as_regex
+    out:
+      [ filtered_ensemblgenomes_metadata ]
 
 outputs: []
