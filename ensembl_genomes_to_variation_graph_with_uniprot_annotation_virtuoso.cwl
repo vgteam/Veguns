@@ -48,4 +48,11 @@ steps:
       filtered_ensemblgenomes_metadata: filter_ensembl_metadata/filtered_ensemblgenomes_metadata
     out:
       [ concatenated_ensembl_fasta ]
+
+  fetch_ensembl_ttl:
+    run: retrieve_turtle_from_ensembl.cwl
+    in:
+      filtered_ensemblgenomes_metadata: filter_ensembl_metadata/filtered_ensemblgenomes_metadata
+    out:
+      [ concatenated_ensembl_turtle ]
 outputs: []
