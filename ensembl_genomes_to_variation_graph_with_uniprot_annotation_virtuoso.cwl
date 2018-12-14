@@ -107,4 +107,21 @@ steps:
       vg: mod/modded_vg
     out:
       [ genome_turtle ]
-outputs: []
+
+  fetch_uniprot:
+    run: retrieve_rdf_from_uniprot.cwl
+    in:
+      filtered_ensemblgenomes_metadata: filter_ensembl_metadata/filtered_ensemblgenomes_metadata
+    out:
+      [ concatenated_uniprot_turtle ]
+
+outputs:
+  ensembl:
+    type: File
+    outputSource: fix_ensembl_turtle/fixed_ensembl_turtle
+  uniprot:
+    type: File
+    outputSource: fetch_uniprot/concatenated_uniprot_turtle
+  vg:
+    type: File
+    outputSource: vg_to_turtle/genome_turtle
