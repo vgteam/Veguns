@@ -4,7 +4,8 @@ cwlVersion: v1.0
 inputs:
   my_ncbiTaxid:
     type: string
-
+  my_baseuri:
+    type: string
 steps:
   fetch_assembly_ids:
     run: retrieve_assembly_identifiers_for_proteomes_from_uniprot.cwl
@@ -98,4 +99,12 @@ steps:
       vg: msga_the_fasta/genome_graph
     out:
       [ modded_vg ]
+
+  vg_to_turtle:
+    run: vg_to_turtle.cwl
+    in:
+      baseIRI: my_baseuri
+      vg: mod/modded_vg
+    out:
+      [ genome_turtle ]
 outputs: []
