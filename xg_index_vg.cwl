@@ -25,14 +25,17 @@ baseCommand: [ vg, index ]
 
 arguments:
   - prefix: --xg-name
-    valueFrom: $(inputs.vg.path)
+    valueFrom: $(inputs.vg.nameroot).xg
   - prefix: --threads
     valueFrom: $(runtime.cores)
+  - $(inputs.vg.path)
 
-stdout: $(inputs.vg.nameroot).xg
 
 outputs:
-  genome_xg: stdout
+  genome_xg:
+    type: File
+    outputBinding:
+      glob: $(inputs.vg.nameroot).xg
   # same as
   # genome_graph:
   #   type: File

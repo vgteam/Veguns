@@ -22,13 +22,12 @@ inputs:
   vg:
     type: File
     # format: edam:format_1929  # we need a IRI/URI for FASTA format
-baseCommand: [ vg, mod ]
+baseCommand: [ vg, augment ]
 
 arguments:
-  - prefix: --include-aln
-    valueFrom: $(inputs.gam.path)
   - prefix: --threads
     valueFrom: $(runtime.cores)
+  - $(inputs.gam.path)
   - $(inputs.vg.path)
 stdout: $(inputs.vg.nameroot)_modded.vg
 

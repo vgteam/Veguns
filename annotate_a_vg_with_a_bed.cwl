@@ -2,7 +2,7 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-label: Construct a genome graph
+label: Annotate a vg graph with bed
 doc: Includes all genome paths
 
 hints:
@@ -33,7 +33,7 @@ arguments:
   - prefix: --threads
     valueFrom: $(runtime.cores)
 
-stdout: $(inputs.vg.nameroot).xg
+stdout: $(inputs.xg.nameroot).gam
 
 outputs:
   gam: stdout
