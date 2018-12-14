@@ -76,4 +76,26 @@ steps:
       vg: msga_the_fasta/genome_graph
     out:
       [ genome_xg ]
+
+  get_ensembl_bed:
+    run: retrieve_bed_files_from_ensembl.cwl
+    in:
+      filtered_ensemblgenomes_metadata: filter_ensembl_metadata/filtered_ensemblgenomes_metadata
+    out:
+      [ concatenated_ensembl_bed ]
+
+  annotate:
+    run: annotate_a_vg_with_a_bed.cwl
+    in:
+      bed: get_ensembl_bed/concatenated_ensembl_bed
+      xg: xg_index_the_vg/genome_xg
+    out:
+       [ gam ]
+  mod:
+    run: vg_mod_with_a_gam.cwl
+    in:
+      gam: annotate/gam
+      vg: msga_the_fasta/genome_graph
+    out:
+      [ modded_vg ]
 outputs: []
