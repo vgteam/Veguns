@@ -27,8 +27,8 @@ baseCommand: [ vg, augment ]
 arguments:
   - prefix: --threads
     valueFrom: $(runtime.cores)
-  - $(inputs.gam.path)
   - $(inputs.vg.path)
+  - $(inputs.gam.path)
 stdout: $(inputs.vg.nameroot)_modded.vg
 
 outputs:

@@ -28,7 +28,9 @@ arguments:
                       start = start+stepSize
                       with urllib.request.urlopen(bed) as response:
                           data=response.read()
-                          data=data.replace(b'chrChromosome',b''+genome['assembly_name'].encode('utf-8'));
+                          assembly_name=genome['assembly_name'].encode('utf-8')
+                          base_count=genome['base_count'].encode('utf-8')
+                          data=data.replace(b'chrChromosome',b''+assembly_name+b':'+assembly_name+b':Chromosome:1:'+base_count+b':1');
                           fasta.write(data)
 outputs:
   concatenated_ensembl_bed:
