@@ -7,7 +7,7 @@ This is a repository of VG related CWL workflows
 This a CWL workflow to turn bacterial genomes from ensembl into a VG pangenome variation graph. And connects it to the protein world of UniProt :)
 
 
-![workflow](https://view.commonwl.org/graph/png/github.com/vgteam/Veguns/blob/master/ensemblBacteriaUniProtVgExampleensembl_genomes_to_variation_graph_with_uniprot_annotation_rdf.cwl)
+![workflow](https://view.commonwl.org/graph/png/github.com/vgteam/Veguns/blob/master/ensemblBacteriaUniProtVgExample/ensembl_genomes_to_variation_graph_with_uniprot_annotation_rdf.cwl)
 ## Running
 
 ```
