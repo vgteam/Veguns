@@ -2,8 +2,8 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-label: Construct a genome graph
-doc: Includes all genome paths
+label: Augment/mod a vg with a gam
+doc: Adds the paths contained in the gam into the vg
 
 hints:
   DockerRequirement:
