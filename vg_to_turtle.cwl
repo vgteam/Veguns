@@ -32,10 +32,12 @@ arguments:
   - prefix: --threads
     valueFrom: $(runtime.cores)
   - --turtle
-
-
 outputs:
-  genome_turtle: stdout
+  genome_turtle:
+    type: File
+    outputBinding:
+      glob: vg-$(inputs.vg.basename).ttl.gz
+stdout: vg-$(inputs.vg.basename).ttl.gz
 
   # same as
   # genome_graph:
