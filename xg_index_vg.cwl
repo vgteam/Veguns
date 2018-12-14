@@ -2,8 +2,8 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-label: Construct a genome graph
-doc: Includes all genome paths
+label: Index a vg with xg
+doc: The XG index allows faster access to vg
 
 hints:
   DockerRequirement:
