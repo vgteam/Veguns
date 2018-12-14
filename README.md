@@ -4,5 +4,5 @@ This a CWL workflow to turn bacterial genomes from ensembl into a VG pangenome v
 # Running
 
 ```
- cwltool ensembl_genomes_to_variation_graph_with_uniprot_annotation_virtuoso.cwl --my_ncbiTaxid 83333
+ cwltool ensembl_genomes_to_variation_graph_with_uniprot_annotation_virtuoso.cwl --my_ncbiTaxid 83333 --my_baseuri http://example.org/vg83333/
 ```
