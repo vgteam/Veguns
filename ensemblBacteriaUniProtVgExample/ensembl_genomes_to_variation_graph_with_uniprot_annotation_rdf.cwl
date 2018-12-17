@@ -119,15 +119,9 @@ outputs:
   ensembl:
     type: File
     outputSource: fix_ensembl_turtle/fixed_ensembl_turtle
-    outputBinding:
-      glob: ensembl-$(inputs.my_ncbiTaxid).ttl.gz
   uniprot:
     type: File
     outputSource: fetch_uniprot/concatenated_uniprot_turtle
-    outputBinding:
-      glob: uniprot-from-proteomes-in-$(inputs.my_ncbiTaxid).ttl.gz
   vg:
     type: File
     outputSource: vg_to_turtle/genome_turtle
-    outputBinding:
-      glob: vg-from-ensembl-genes-and-genomes-$(inputs.my_ncbiTaxid).ttl.gz
