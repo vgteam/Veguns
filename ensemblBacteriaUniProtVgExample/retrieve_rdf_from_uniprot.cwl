@@ -21,7 +21,8 @@ arguments:
         genomes = json.load(f)
         with open('/dev/stdout', 'wb') as turtle:
           for genome in genomes:
-            loc="https://www.uniprot.org/uniprot/?format=ttl&compressed=yes&query=proteome:(assembly_id:"+genome['assembly_id']+")"
+            loc="https://www.uniprot.org/uniprot/?format=ttl&compressed=yes&query=proteome:(genome_assembly:"+genome['assembly_id']+")"
+            #turtle.write(loc.encode('utf-8'))
             with urllib.request.urlopen(loc) as response:
               turtle.write(response.read())
 outputs:
