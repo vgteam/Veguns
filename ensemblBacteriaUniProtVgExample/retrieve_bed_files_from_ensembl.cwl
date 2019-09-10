@@ -24,7 +24,7 @@ arguments:
                   stepSize=50000
                   start=0;
                   for end in range(stepSize, int(genome['base_count']), stepSize):
-                      bed="https://rest.ensemblgenomes.org/overlap/region/"+genome['species']+"/Chromosome:"+str(start)+":"+str(end)+"?feature=gene;content-type=text/x-bed"
+                      bed="https://rest.ensembl.org/overlap/region/"+genome['species']+"/Chromosome:"+str(start)+":"+str(end)+"?feature=gene;content-type=text/x-bed"
                       start = start+stepSize
                       with urllib.request.urlopen(bed) as response:
                           data=response.read()
